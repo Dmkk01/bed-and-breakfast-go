@@ -1,3 +1,3 @@
-module github.com/Dmkk01/test
+module bed-and-breakfast
 
 go 1.20

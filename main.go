@@ -1,24 +1,35 @@
 package main
 
 import (
-	"errors"
-	"log"
+	"fmt"
+	"net/http"
+	"text/template"
 )
 
-func main() {
-	result, err := divide(100, 0)
-
-	if err != nil {
-		log.Println(err)
-		return
-	}
-
-	log.Println("result of division is", result)
+func Home(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "home.page.html")
 }
 
-func divide(x, y float32) (float32, error) {
-	if y == 0 {
-		return 0, errors.New("cannot divide by zero")
+func About(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "about.page.html")
+}
+
+func renderTemplate(w http.ResponseWriter, tmpl string) {
+	parsedTemplate, _ := template.ParseFiles("./templates/" + tmpl)
+	err := parsedTemplate.Execute(w, nil)
+
+	if err != nil {
+		fmt.Println("Error executing template :", tmpl)
+		return
 	}
-	return x / y, nil
+}
+
+const portNumber = ":11111"
+
+func main() {
+	http.HandleFunc("/", Home)
+	http.HandleFunc("/about", About)
+
+	fmt.Printf("Starting application on port %s \n", portNumber)
+	http.ListenAndServe(portNumber, nil)
 }
