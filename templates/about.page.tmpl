@@ -4,6 +4,14 @@
 <div class="container">
     <h1>About Page</h1>
     <p>Data: {{index .StringMap "test"}}</p>
+
+    <p>
+        {{if ne (index .StringMap "remote_ip") ""}}
+        Your remote IP is: {{index .StringMap "remote_ip"}}
+        {{else}}
+        Your remote IP is unknown
+        {{end}}
+    </p>
 </div>
 {{end}}
 
