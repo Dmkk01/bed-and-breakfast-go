@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Bed & Breakfast</title>
+    <title>Reservations</title>
 
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.0.1/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -58,40 +58,29 @@
         </div>
     </div>
 
-    <div class="carousel w-full">
-        <div id="slide1" class="carousel-item relative w-full">
-            <img src="static/images/woman-laptop.png" class="w-full" />
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide4" class="btn btn-circle">❮</a>
-                <a href="#slide2" class="btn btn-circle">❯</a>
-            </div>
-        </div>
-        <div id="slide2" class="carousel-item relative w-full">
-            <img src="static/images/tray.png" class="w-full" />
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide1" class="btn btn-circle">❮</a>
-                <a href="#slide3" class="btn btn-circle">❯</a>
-            </div>
-        </div>
-        <div id="slide3" class="carousel-item relative w-full">
-            <img src="static/images/outside.png" class="w-full" />
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide2" class="btn btn-circle">❮</a>
-                <a href="#slide4" class="btn btn-circle">❯</a>
-            </div>
-        </div>
-    </div>
-
     <div class="hero py-10 bg-base-200">
-        <div class="hero-content text-center">
-            <div class="max-w-2xl">
-                <h1 class="text-5xl font-bold">Welcome to Fort Smythe Bed and Breakfast</h1>
-                <p class="py-6"> Your home away form home, set on the majestic waters of the Atlantic Ocean, this will
-                    be a vacation
-                    to remember.
-                    Your home away form home, set on the majestic waters of the Atlantic Ocean, this will be a vacation
-                    to remember.</p>
-                <a href="/search-availability" class="btn btn-primary">Make Reservation Now</a>
+        <div class="hero-content w-full text-center">
+            <div class="max-w-5xl w-full">
+                <h1 class="text-5xl font-bold my-10">Search for Availability</h1>
+                <form action="reservation.html" method="get" class="flex flex-col items-center gap-6 w-full">
+                    <div class="flex flex-col md:flex-row gap-4 items-center w-full">
+                        <div class="form-control w-full">
+                            <label for="start_date" class="label">
+                                <span class="label-text">Starting Date</span>
+                            </label>
+                            <input required id="start_date" name="start_date" type="date" placeholder="Enter in form of YYYY-MM-DD"
+                                class="input input-bordered w-full" />
+                        </div>
+                        <div class="form-control w-full">
+                            <label for="end_date" class="label">
+                                <span class="label-text">Ending Date</span>
+                            </label>
+                            <input required id="end_date" name="end_date" type="date" placeholder="Enter in form of YYYY-MM-DD"
+                                class="input input-bordered w-full" />
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary max-w-xs w-full" value="Search" />
+                </form>
             </div>
         </div>
     </div>
