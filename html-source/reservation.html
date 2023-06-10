@@ -8,7 +8,8 @@
     <title>Reservations</title>
 
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.0.1/dist/full.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.3/dist/css/datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
 </head>
 
 <body data-theme="cupcake">
@@ -63,19 +64,20 @@
             <div class="max-w-5xl w-full">
                 <h1 id="title-text" class="text-5xl font-bold my-10">Search for Availability</h1>
                 <form action="reservation.html" method="get" class="flex flex-col items-center gap-6 w-full">
-                    <div class="flex flex-col md:flex-row gap-4 items-center w-full">
+
+                    <div id="range-input" class="flex flex-col md:flex-row gap-4 items-center w-full">
                         <div class="form-control w-full">
                             <label for="start_date" class="label">
                                 <span class="label-text">Starting Date</span>
                             </label>
-                            <input required id="start_date" name="start_date" type="date" placeholder="Enter in form of YYYY-MM-DD"
+                            <input required id="start_date" name="start_date" placeholder="Enter in form of YYYY-MM-DD"
                                 class="input input-bordered w-full" />
                         </div>
                         <div class="form-control w-full">
                             <label for="end_date" class="label">
                                 <span class="label-text">Ending Date</span>
                             </label>
-                            <input required id="end_date" name="end_date" type="date" placeholder="Enter in form of YYYY-MM-DD"
+                            <input required id="end_date" name="end_date" placeholder="Enter in form of YYYY-MM-DD"
                                 class="input input-bordered w-full" />
                         </div>
                     </div>
@@ -123,9 +125,42 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/notie"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.3/dist/js/datepicker-full.min.js"></script>
     <script>
-        const myEl = document.getElementById('title-text')
-        // myEl.innerText = 'Hello from the footer!'
+        const elem = document.getElementById('range-input');
+        const rangepicker = new DateRangePicker(elem, {
+            format: 'yyyy-mm-dd',
+        });
+
+        /**
+         * @param {string} message
+         * @param {string} type
+         */
+        const alertSuccess = (message, type) => {
+            notie.alert({
+                type: type,
+                text: message,
+                stay: true,
+                time: 3,
+                position: "top"
+            })
+        }
+
+        // alertSuccess('Welcome to Bed and Breakfast', "success");
+
+        const sAlert = (title, text, icon, button) => {
+            Swal.fire({
+                title: title,
+                text: text,
+                icon: icon,
+                confirmButtonText: button
+            })
+        }
+
+        sAlert('Welcome to Bed and Breakfast', "success", "success", "OK");
     </script>
 </body>
 
