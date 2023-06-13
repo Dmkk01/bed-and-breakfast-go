@@ -1,5 +1,43 @@
 {{template "base" .}}
 
 {{define "content"}}
-
+<div class="hero py-10 bg-base-200">
+    <div class="hero-content text-center">
+        <div class="max-w-2xl">
+            <h1 class="text-5xl font-bold my-10">Make reservation</h1>
+            
+            <form method="post" action="" novalidate class="flex flex-col items-center gap-6 w-full">
+                <div class="form-control w-full">
+                    <label for="first_name" class="label">
+                        <span class="label-text">First Name</span>
+                    </label>
+                    <input required id="first_name" name="first_name" type="text" placeholder="First Name"
+                        class="input input-bordered w-full" />
+                </div>
+                <div class="form-control w-full">
+                    <label for="last_name" class="label">
+                        <span class="label-text">Last Name</span>
+                    </label>
+                    <input required id="last_name" name="last_name" type="text" placeholder="Last Name"
+                        class="input input-bordered w-full" />
+                </div>
+                <div class="form-control w-full">
+                    <label for="email" class="label">
+                        <span class="label-text">Email</span>
+                    </label>
+                    <input required id="email" name="email" type="email" placeholder="Email"
+                        class="input input-bordered w-full" />
+                </div>
+                <div class="form-control w-full">
+                    <label for="phone" class="label">
+                        <span class="label-text">Phone</span>
+                    </label>
+                    <input required id="phone" name="phone" type="text" placeholder="Phone"
+                        class="input input-bordered w-full" />
+                </div>
+                <input type="submit" class="btn btn-primary max-w-xs w-full" value="Make reservation" />
+            </form>
+        </div>
+    </div>
+</div>
 {{end}}

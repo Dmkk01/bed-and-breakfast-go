@@ -5,8 +5,8 @@
     <div class="hero-content w-full text-center">
         <div class="max-w-5xl w-full">
             <h1 id="title-text" class="text-5xl font-bold my-10">Search for Availability</h1>
-            <form action="" method="get" class="flex flex-col items-center gap-6 w-full">
-
+            <form action="/search-availability" method="post" class="flex flex-col items-center gap-6 w-full">
+                <input type="text" name="csrf_token" value="{{.CSRFToken}}" hidden />
                 <div id="range-input" class="flex flex-col md:flex-row gap-4 items-center w-full">
                     <div class="form-control w-full">
                         <label for="start_date" class="label">
