@@ -1,17 +1,18 @@
 {{template "base" .}}
 
 {{define "content"}}
-<div class="container">
-    <h1>About Page</h1>
-    <p>Data: {{index .StringMap "test"}}</p>
-
-    <p>
-        {{if ne (index .StringMap "remote_ip") ""}}
-        Your remote IP is: {{index .StringMap "remote_ip"}}
-        {{else}}
-        Your remote IP is unknown
-        {{end}}
-    </p>
+<div class="hero py-10 bg-base-200">
+    <div class="hero-content text-center">
+        <div class="max-w-2xl">
+            <h1 class="text-5xl font-bold my-10">About Page</h1>
+            <!-- <p class="py-6"> Your home away form home, set on the majestic waters of the Atlantic Ocean, this will
+                be a vacation
+                to remember.
+                Your home away form home, set on the majestic waters of the Atlantic Ocean, this will be a vacation
+                to remember.</p> -->
+            <a href="/search-availability" class="btn btn-primary">Check availability Now</a>
+        </div>
+    </div>
 </div>
 {{end}}
 

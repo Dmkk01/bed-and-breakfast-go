@@ -1,0 +1,41 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="hero py-10 bg-base-200">
+    <div class="hero-content w-full text-center">
+        <div class="max-w-5xl w-full">
+            <h1 id="title-text" class="text-5xl font-bold my-10">Search for Availability</h1>
+            <form action="" method="get" class="flex flex-col items-center gap-6 w-full">
+
+                <div id="range-input" class="flex flex-col md:flex-row gap-4 items-center w-full">
+                    <div class="form-control w-full">
+                        <label for="start_date" class="label">
+                            <span class="label-text">Starting Date</span>
+                        </label>
+                        <input required id="start_date" name="start_date" placeholder="Enter in form of YYYY-MM-DD"
+                            class="input input-bordered w-full" />
+                    </div>
+                    <div class="form-control w-full">
+                        <label for="end_date" class="label">
+                            <span class="label-text">Ending Date</span>
+                        </label>
+                        <input required id="end_date" name="end_date" placeholder="Enter in form of YYYY-MM-DD"
+                            class="input input-bordered w-full" />
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary max-w-xs w-full" value="Search" />
+            </form>
+        </div>
+    </div>
+</div>
+
+{{end}}
+
+{{define "js"}}
+<script>
+    const elem = document.getElementById('range-input');
+    const rangepicker = new DateRangePicker(elem, {
+        format: 'yyyy-mm-dd',
+    });
+</script>
+{{end}}
