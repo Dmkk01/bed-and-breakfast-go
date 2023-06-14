@@ -5,9 +5,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Dmkk01/bed-and-breakfast/pkg/config"
-	"github.com/Dmkk01/bed-and-breakfast/pkg/handlers"
-	"github.com/Dmkk01/bed-and-breakfast/pkg/render"
+	"github.com/Dmkk01/bed-and-breakfast/internal/config"
+	"github.com/Dmkk01/bed-and-breakfast/internal/handlers"
+	"github.com/Dmkk01/bed-and-breakfast/internal/render"
 	"github.com/alexedwards/scs/v2"
 )
 

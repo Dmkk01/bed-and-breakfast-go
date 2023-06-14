@@ -1,12 +1,13 @@
 package handlers
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 
-	"github.com/Dmkk01/bed-and-breakfast/pkg/config"
-	"github.com/Dmkk01/bed-and-breakfast/pkg/models"
-	"github.com/Dmkk01/bed-and-breakfast/pkg/render"
+	"github.com/Dmkk01/bed-and-breakfast/internal/config"
+	"github.com/Dmkk01/bed-and-breakfast/internal/models"
+	"github.com/Dmkk01/bed-and-breakfast/internal/render"
 )
 
 var Repo *Repository
@@ -70,6 +71,26 @@ func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
 	end := r.Form.Get("end_date")
 
 	w.Write([]byte(fmt.Sprintf("start date is %s and end date is %s", start, end)))
+}
+
+type jsonResponse struct {
+	OK      bool   `json:"ok"`
+	Message string `json:"message"`
+}
+
+func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
+	resp := jsonResponse{
+		OK:      true,
+		Message: "Available!",
+	}
+
+	out, err := json.MarshalIndent(resp, "", "    ")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(out)
 }
 
 func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {

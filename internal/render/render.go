@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 	"text/template"
 
-	"github.com/Dmkk01/bed-and-breakfast/pkg/config"
-	"github.com/Dmkk01/bed-and-breakfast/pkg/models"
+	"github.com/Dmkk01/bed-and-breakfast/internal/config"
+	"github.com/Dmkk01/bed-and-breakfast/internal/models"
 	"github.com/justinas/nosurf"
 )
 

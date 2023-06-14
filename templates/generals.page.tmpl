@@ -30,7 +30,46 @@
             </form>
         `
 
-        attention.custom({ msg: html, title: "Check Availability" })
+        attention.custom({
+            msg: html,
+            title: "Check Availability",
+            willOpen: () => {
+                const elem = document.getElementById('check-availability-form')
+                const rp = new DateRangePicker(elem, {
+                    format: "yyyy-mm-dd",
+                    showOnFocus: true,
+                })
+            },
+            didOpen: () => {
+                        document.getElementById('start').removeAttribute('disabled')
+                        document.getElementById('end').removeAttribute('disabled')
+                    },
+            callback: (result) => {
+                console.log("called")
+
+                const form = document.getElementById('check-availability-form')
+                const formData = new FormData(form)
+                formData.append('csrf_token', "{{.CSRFToken}}")
+
+                fetch('/search-availability-json', {
+                    method: 'POST',
+                    body: formData
+                }).then(res => res.json()).then(data => {
+                    console.log(data)
+                    // let calendar = new VanillaCalendar({
+                    //     selector: "#myCalendar",
+                    //     pastDates: false,
+                    //     availableDates: data.dates,
+                    //     datesFilter: true,
+                    //     onSelect: (data, elem) => {
+                    //         console.log(data, elem)
+                    //         document.getElementById('start').value = data[0]
+                    //         document.getElementById('end').value = data[data.length - 1]
+                    //     }
+                    // })
+                })
+            }
+        })
     });
 </script>
 
