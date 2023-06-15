@@ -5,35 +5,48 @@
     <div class="hero-content text-center">
         <div class="max-w-2xl">
             <h1 class="text-5xl font-bold my-10">Make reservation</h1>
-            
-            <form method="post" action="" novalidate class="flex flex-col items-center gap-6 w-full">
-                <div class="form-control w-full">
+            {{$res := index .Data "reservation"}}
+            <form method="post" action="/make-reservation" novalidate class="flex flex-col items-center gap-6 w-full">
+                <input type="hidden" name="csrf_token" value="{{.CSRFToken}}" />
+                <div class="form-control w-full relative">
                     <label for="first_name" class="label">
                         <span class="label-text">First Name</span>
                     </label>
-                    <input required id="first_name" name="first_name" type="text" placeholder="First Name"
-                        class="input input-bordered w-full" />
+                    {{with .Form.Errors.Get "first_name"}}
+                    <div class="text-xs absolute -bottom-5 left-1/2 -translate-x-1/2 text-red-500">{{.}}</div>
+                    {{end}}
+                    <input required id="first_name" value="{{$res.FirstName}}" name="first_name" type="text"
+                        placeholder="First Name" class="input input-bordered w-full {{with .Form.Errors.Get "first_name"}} border-red-500 {{end}}" />
                 </div>
-                <div class="form-control w-full">
+                <div class="form-control w-full relative">
                     <label for="last_name" class="label">
                         <span class="label-text">Last Name</span>
                     </label>
-                    <input required id="last_name" name="last_name" type="text" placeholder="Last Name"
-                        class="input input-bordered w-full" />
+                    {{with .Form.Errors.Get "last_name"}}
+                    <div class="text-xs absolute -bottom-5 left-1/2 -translate-x-1/2 text-red-500">{{.}}</div>
+                    {{end}}
+                    <input required id="last_name" value="{{$res.LastName}}" name="last_name" type="text"
+                        placeholder="Last Name" class="input input-bordered w-full {{with .Form.Errors.Get "last_name"}} border-red-500 {{end}}" />
                 </div>
-                <div class="form-control w-full">
+                <div class="form-control w-full relative">
                     <label for="email" class="label">
                         <span class="label-text">Email</span>
                     </label>
-                    <input required id="email" name="email" type="email" placeholder="Email"
-                        class="input input-bordered w-full" />
+                    {{with .Form.Errors.Get "email"}}
+                    <div class="text-xs absolute -bottom-5 left-1/2 -translate-x-1/2 text-red-500">{{.}}</div>
+                    {{end}}
+                    <input required id="email" value="{{$res.Email}}" name="email" type="email" placeholder="Email"
+                        class="input input-bordered w-full {{with .Form.Errors.Get "email"}} border-red-500 {{end}}" />
                 </div>
-                <div class="form-control w-full">
+                <div class="form-control w-full relative">
                     <label for="phone" class="label">
                         <span class="label-text">Phone</span>
                     </label>
-                    <input required id="phone" name="phone" type="text" placeholder="Phone"
-                        class="input input-bordered w-full" />
+                    {{with .Form.Errors.Get "phone"}}
+                    <div class="text-xs absolute -bottom-5 left-1/2 -translate-x-1/2 text-red-500">{{.}}</div>
+                    {{end}}
+                    <input required id="phone" value="{{$res.Phone}}" name="phone" type="text" placeholder="Phone"
+                        class="input input-bordered w-full {{with .Form.Errors.Get "phone"}} border-red-500 {{end}}" />
                 </div>
                 <input type="submit" class="btn btn-primary max-w-xs w-full" value="Make reservation" />
             </form>
