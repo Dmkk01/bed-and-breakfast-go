@@ -1,12 +1,14 @@
 package main
 
 import (
+	"encoding/gob"
 	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/Dmkk01/bed-and-breakfast/internal/config"
 	"github.com/Dmkk01/bed-and-breakfast/internal/handlers"
+	"github.com/Dmkk01/bed-and-breakfast/internal/models"
 	"github.com/Dmkk01/bed-and-breakfast/internal/render"
 	"github.com/alexedwards/scs/v2"
 )
@@ -17,6 +19,7 @@ var app config.AppConfig
 var session *scs.SessionManager
 
 func main() {
+	gob.Register(models.Reservation{})
 
 	app.InProduction = false
 

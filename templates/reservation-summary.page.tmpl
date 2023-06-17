@@ -1,0 +1,47 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="hero py-10 bg-base-200">
+    <div class="hero-content text-center">
+        <div class="max-w-2xl">
+            <h1 class="text-5xl font-bold my-10">Reservation Summary</h1>
+            {{$res := index .Data "reservation"}}
+            <div class="overflow-x-auto">
+                <table class="table">
+                  <thead>
+                  </thead>
+                  <tbody>
+                    <tr class="hover">
+                      <th>Name:</th>
+                      <td>{{$res.FirstName}} {{$res.LastName}}</td>
+                    </tr>
+                    <tr class="hover">
+                        <th>Arrival:</th>
+                        <td></td>
+                    </tr>
+                    <tr class="hover">
+                        <th>Departure:</th>
+                        <td></td>
+                    </tr>
+                    <tr class="hover">
+                        <th>Email:</th>
+                        <td>{{$res.Email}}</td>
+                    </tr>
+                    <tr class="hover">
+                        <th>Phone:</th>
+                        <td>{{$res.Phone}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        </div>
+    </div>
+</div>
+{{end}}
+
+{{define "js"}}
+<script>
+    console.log("Hello World");
+</script>
+
+{{end}}
